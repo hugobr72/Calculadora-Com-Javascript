@@ -1,37 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>calculadora</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Modelo</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class="calculator">
-        <div class="display" id="display"></div>
-        <div class="calculator-buttons">
-            <button id="limparDisplay">CE</button>
-            <button id="limparCalculo">C</button>
-            <button id="backspace"></button>
-            <button id="operadorDividir">/</button>
-            <button id="tecla7">7</button>
-            <button id="tecla8">8</button>
-            <button id="tecla9">9</button>
-            <button id="operadorMultiplicar">*</button>
-            <button id="tecla4">4</button>
-            <button id="tecla5">5</button>
-            <button id="tecla6">6</button>
-            <button id="operadorSubtrair">-</button>
-            <button id="tecla1">1</button>
-            <button id="tecla2">2</button>
-            <button id="tecla3">3</button>
-            <button id="operadorAdicionar">+</button>
-            <button id="inverter"></button>
-            <button id="tecla0">0</button>
-            <button id="decimal">,</button>
-            <button id="igual">=</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+  <section class="container">
+    <h1>Calculadora</h1>
+
+    <table class="calculadora">
+      <tr>
+        <td colspan="4"><input type="text" class="display"></td>
+      </tr>
+
+      <tr>
+        <td><button class="btn btn-clear">C</button></td>
+        <td><button class="btn btn-num">(</button></td>
+        <td><button class="btn btn-num">)</button></td>
+        <td><button class="btn btn-num">/</button></td>
+      </tr>
+
+      <tr>
+        <td><button class="btn btn-num">7</button></td>
+        <td><button class="btn btn-num">8</button></td>
+        <td><button class="btn btn-num">9</button></td>
+        <td><button class="btn btn-num">*</button></td>
+      </tr>
+
+      <tr>
+        <td><button class="btn btn-num">4</button></td>
+        <td><button class="btn btn-num">5</button></td>
+        <td><button class="btn btn-num">6</button></td>
+        <td><button class="btn btn-num">+</button></td>
+      </tr>
+
+      <tr>
+        <td><button class="btn btn-num">1</button></td>
+        <td><button class="btn btn-num">2</button></td>
+        <td><button class="btn btn-num">3</button></td>
+        <td><button class="btn btn-num">-</button></td>
+      </tr>
+
+      <tr>
+        <td><button class="btn btn-num">.</button></td>
+        <td><button class="btn btn-num">0</button></td>
+        <td><button class="btn btn-del">&laquo;</button></td>
+        <td><button class="btn btn-eq">=</button></td>
+      </tr>
+    </table>
+
+  </section>
+
+  <script src="main.js"></script>
 </body>
+
 </html>
