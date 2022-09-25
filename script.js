@@ -1,110 +1,65 @@
-document.addEventListener('click', function (e) {
-    let el = e.target;
-    const display = document.querySelector('.display')
-    el = el.innerText 
-    console.log(el)
-    if ((isNaN(el) === false)) {
-        console.log(el)
-        el = parseInt(el)
-    }
-    if (el === 0) {
-        display.innerHTML += el
-    }
-    if (el === 1) {
-        display.innerHTML += el
-    }
-    if (el === 2) {
-        display.innerHTML += el
-    }
-    if (el === 3) {
-        display.innerHTML += el
-    }
-    if (el === 4) {
-        display.innerHTML += el
-    }
-    if (el === 5) {
-        display.innerHTML += el
-    }
-    if (el === 6) {
-        display.innerHTML += el
-    }
-    if (el === 7) {
-        display.innerHTML += el
-    }
-    if (el === 8) {
-        display.innerHTML += el
+function Calculadora() {
+
+    this.display = document.querySelector('.display');
+    this.container = document.querySelector('.container');
+    this.capturaCliques = () => {
+        document.addEventListener('click', event => {
+            const el = event.target;
+            console.log(el)
+            if (el.classList.contains('btn-num')) this.addNumeroDisplay(el);
+            if (el.classList.contains('btn-clear')) this.clear();
+            if (el.classList.contains('btn-del')) this.del();
+            if (el.classList.contains('btn-eq')) this.realizaConta();
+            
+        })
     }
 
-    if (el === 9) {
-        display.innerHTML += el
-    }
-
-    if (el === 'CE') {
-        display.innerHTML = ''
-    }
-
-
-    if (el === 'C') {
-        display.innerHTML = excluirUltimoNumero(1)
-    }
-
-    if (el === '+') {
-        display.innerHTML += el
-    }
-
-    if (el === '-') {
-        display.innerHTML += el
-    }
-
-    if (el === '*') {
-        display.innerHTML += el
+    this.addNumeroDisplay = (el) => {
+        this.display.value += el.innerText;
+        this.display.focus();
 
     }
-        if (el === '/' ) {
-        console.log(el)
-        display.innerHTML += el
+
+    this.clear = () => {  
+        this.display.value = ''
+    }
+
+    this.del = () => {
+        this.display.value = this.display.value.slice(0, - 1);
+    }
+
+    this.realizaConta = () => {
+        try{
+            const conta = eval(this.display.value)
+            if (!conta){
+                alert('Conta invalida');
+            }else{
+                this.display.value = conta;
+            }
+        }catch(e){
+            alert('Conta invalida');
         }
-
-    if (el === ',') {
-            el = '.'
-            display.innerHTML += el
-        }
-
-    if (el === '=') {
-        console.log(display.innerHTML)
-        let result = resultado(display.innerHTML)
-        console.log(result)
-        
-        display.innerHTML = result
-
-        }
-    
-})
-
-function excluirUltimoNumero(cont) {
-    let textoRemovido = 0
-    const numeros = display.innerHTML
-    const array = []
-    const arrayComMenos = []
-    for (let numero of numeros) {
-        array.push(numero)
-    }
-    const contador = array.length - cont
-    for (let i = 0; i < contador; i++) {
-        arrayComMenos.push(array[i])
-    }
-    console.log(arrayComMenos)
-    for (let numero of arrayComMenos) {
-        if (arrayComMenos[numero] !== '0') {
-            textoRemovido += numero
-        }
+        this.container.focus();
     }
 
-    return textoRemovido
+    this.capturaEnter = () => {
+        document.addEventListener('keypress', e=>{
+            if(e.keyCode === 13){
+                this.realizaConta();
+                this.container.focus();
+            } return;
+            
+        })
+
+    }
+
+    this.inicia = () => {
+        this.display.focus();
+        this.capturaCliques();
+        this.capturaEnter();
+        this.capturaTeclado();
+    }
 }
 
-function resultado(texto){
-    if (texto){
-        return eval(texto)
-    }
-}
+const calculadora = new Calculadora();
+calculadora.inicia();
